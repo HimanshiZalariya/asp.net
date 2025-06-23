@@ -1,120 +1,121 @@
-﻿using Lab2.Lab2;
-using System.Drawing;
+﻿using static Lab4.AllBank;
 
-namespace Lab2
+namespace Lab4
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("enter a program number:\n1]Candidate\n2]Staff \n3]BankAccount\n4]StudentDetail\n5]AreaOfRectangle\n6]Account_Detail\n7]Salary\n8]Distance\n9]Furniture\n10]Gross");
+            Console.WriteLine("enter a program number:\n1]Areas\n2].Addition\n3].BankRBI\n4].Hospital\n5].FindArea6]BankAccount\n");
             int n = Convert.ToInt32(Console.ReadLine());
-
             switch (n)
             {
                 case 1:
-                    Candidate2_1 candidate = new Candidate2_1();
-                    candidate.GetCandidateDetails();
-                    candidate.DisplayCandidateDetails();
+                    Addition addition = new Addition();
+                    int add1 = addition.Add(1, 1);
+                    float add2 = addition.Add(5.5f, 20.32f);
+                    Console.WriteLine(" int number:" + add1);
+                    Console.WriteLine(" float number:" + add2);
                     break;
 
 
                 case 2:
-                    Staff2_2 staff = new Staff2_2();
-                    Staff2_2[] s = new Staff2_2[2];
-                    for (int i = 0; i < 2; i++)
-                    {
-                        s[i] = new Staff2_2();
-                        s[i].GetStaff();
-                    }
-                    for (int i = 0; i < 2; i++)
-                    {
-                        s[i].SetDisplay();
-                    }
+                    Console.WriteLine("enter a value of side:");
+                    int side = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter valu of length:");
+                    int l = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter value of breadth:");
+                    int b = Convert.ToInt32(Console.ReadLine());
+                    Area area = new Area();
+                    int squarearea = area.area(side);
+                    int reacarea = area.area(l, b);
+                    Console.WriteLine("area of square:" + squarearea);
+                    Console.WriteLine("area of rectangle:" + reacarea);
                     break;
 
                 case 3:
-                    Bank_Account2_3 bankAccount = new Bank_Account2_3();
-                    bankAccount.GetAccountDetails();
-                    bankAccount.DisplayAccountDetails();
+                    Console.WriteLine("Enter principal : ");
+                    double principal = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Enter rate : ");
+                    double rate = Convert.ToDouble(Console.ReadLine());
+                    RBI bank;
+                    bank = new RBI();
+                    bank.CalculateInterest(principal, rate);
+                    bank = new HDFC();
+                    bank.CalculateInterest(principal, rate);
+
+                    bank = new SBI();
+                    bank.CalculateInterest(principal, rate);
+
+                    bank = new ICICI();
+                    bank.CalculateInterest(principal, rate);
                     break;
 
                 case 4:
-                    Console.Write("Enter Enrollment No: ");
-                    string enrollmentNo = Console.ReadLine();
+              
 
-                    Console.Write("Enter Student Name: ");
-                    string studentName = Console.ReadLine();
-
-                    Console.Write("Enter Semester: ");
-                    int semester = int.Parse(Console.ReadLine());
-
-                    Console.Write("Enter CPI: ");
-                    double cpi = double.Parse(Console.ReadLine());
-
-                    Console.Write("Enter SPI: ");
-                    double spi = double.Parse(Console.ReadLine());
-
-                    Student2_4 student = new Student2_4(enrollmentNo, studentName, semester, cpi, spi);
-                    student.DisplayStudentDetails();
+                    Hospital hospital;
+                    hospital = new Hospital();
+                    hospital.HospitalDetails();
+                    hospital = new Apollo();
+                    hospital.HospitalDetails();
+                    hospital = new Wockhardt();
+                    hospital.HospitalDetails();
+                    hospital = new Gokul_Superspeciality();
+                    hospital.HospitalDetails();
                     break;
 
                 case 5:
-                    Console.WriteLine("enter a length:");
-                    double length = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("enter a width:");
-                    double width = Convert.ToDouble(Console.ReadLine());
-
-                    Rectangle2_5 ractangle = new Rectangle2_5(length, width);
-                    ractangle.DisplayArea();
+                    Console.WriteLine("enter a value of side:");
+                    int s = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter valu of length:");
+                    int l1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter value of breadth:");
+                    int b1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter a radius");
+                    double radius = Convert.ToDouble(Console.ReadLine());
+                    FindArea findArea = new FindArea();
+                    int squarearea1 = findArea.Farea(s);
+                    int reacarea1 = findArea.Farea(l1, b1);
+                    double circlearea = findArea.Farea(radius);
+                    Console.WriteLine("area of square:" + squarearea1);
+                    Console.WriteLine("area of rectangle:" + reacarea1);
+                    Console.WriteLine("area of circle:" + circlearea);
                     break;
 
                 case 6:
-                    Interest interest = new Interest();
-                    interest.GetAccountDetails();
-                    interest.CalculateInterest();
-                    break;
+                    Console.Write("Enter account holder name: ");
+                    string name = Console.ReadLine();
 
-                case 7:
-                    Console.WriteLine("enter Basic:");
-                    double basic = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("enter TA:");
-                    double ta = Convert.ToDouble(Console.ReadLine());
-                    Salary2_7 salary = new Salary2_7(basic, ta);
-                    salary.DispalyTotalDetail();
-                    break;
+                    Console.Write("Enter initial balance: ");
+                    double iBalance = Convert.ToDouble(Console.ReadLine());
 
-                case 8:
-                    Console.WriteLine("enter a first distance:");
-                    double d1 = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("enter a sec distance:");
-                    double d2 = Convert.ToDouble(Console.ReadLine());
-                    Distance2_8 distance = new Distance2_8(d1, d2);
-                    distance.AddDistance();
-                    distance.DisplayDistance();
-                    break;
+                    BankAccount acc = new BankAccount(name, iBalance);
 
-                case 9:
-                    Console.WriteLine("enter a Material :");
-                    string material = Console.ReadLine();
-                    Console.WriteLine("enter a Price");
-                    double price = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("enter a Heigth");
-                    double heigth = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("enter a Surface_area");
-                    double surface_area = Convert.ToInt32(Console.ReadLine());
-                    Table table = new Table(material, price, heigth, surface_area);
-                    table.DisplayTabInfo();
-                    break;
+                    Console.Write("Enter deposit (cash): ");
+                    double cashDeposit = Convert.ToDouble(Console.ReadLine());
+                    acc.Deposit(cashDeposit);
 
-                case 10:
-                    SalaryCal salaryCal = new SalaryCal();
-                    salaryCal.basic_sal();
-                    salaryCal.Disp_sal();
-                    salaryCal.Gross_sal();
-                    break;
+                    Console.Write("Enter check number to deposit: ");
+                    string checkNum = Console.ReadLine();
 
+                    Console.Write("Enter amount to deposit by check: ");
+                    double checkDeposit = Convert.ToDouble(Console.ReadLine());
+                    acc.Deposit(checkNum, checkDeposit);
+
+                    Console.Write("Enter amount to withdraw (cash): ");
+                    double w1 = Convert.ToDouble(Console.ReadLine());
+                    acc.Withdraw(w1);
+
+                    Console.Write("Enter check number to withdraw: ");
+                    string withdrawCheckNum = Console.ReadLine();
+
+                    Console.Write("Enter amount to withdraw by check: ");
+                    double w2 = Convert.ToDouble(Console.ReadLine());
+                    acc.Withdraw(withdrawCheckNum, w2);
+                    acc.ShowBalance();
+                    break;
             }
         }
-        }
+    }
 }
