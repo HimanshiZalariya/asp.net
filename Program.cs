@@ -1,157 +1,120 @@
-﻿//---------------------1----------------------
+﻿using Lab2.Lab2;
+using System.Drawing;
 
-//Console.WriteLine("xyz abc pqr");
-//Console.WriteLine("darshan university");
-//Console.WriteLine("1234567892");
-//Console.WriteLine("rajkot");
+namespace Lab2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter a program number:\n1]Candidate\n2]Staff \n3]BankAccount\n4]StudentDetail\n5]AreaOfRectangle\n6]Account_Detail\n7]Salary\n8]Distance\n9]Furniture\n10]Gross");
+            int n = Convert.ToInt32(Console.ReadLine());
 
-//---------------------2----------------------
-
-//Console.WriteLine("enter a ");
-//int a = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("enter b ");
-//int b = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("First Number : " + a);
-//Console.WriteLine("Second Number : " + b);
-
-//---------------------3----------------------
-
-//Console.WriteLine("Enter Name : ");
-//string name = Convert.ToString(Console.ReadLine());
-//Console.WriteLine("Enter countery : ");
-//string country = Convert.ToString(Console.ReadLine());
-//Console.WriteLine($"hello {name} from countey {country}");
-
-//---------------------4----------------------
-
-//Console.Write("Enter L: ");
-//int l = Convert.ToInt32(Console.ReadLine());
-//Console.Write("Enter  W: ");
-//int b = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Area : " + (l * b));
-
-//---------------------5----------------------
-
-//Console.WriteLine("enter l1");
-//int l1 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("enter b1");
-//int b1 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("area is rectangle:" + l1 * b1);
-
-//Console.WriteLine("enter l2");
-//int l2 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("area is square:" + l2 * l2);
-
-//Console.WriteLine("enter r1");
-//int r = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("area is circle:" + 3.14 * r * r);
-
-//---------------------6----------------------
-
-//Console.Write("Enter F: ");
-//int f = Convert.ToInt32(Console.ReadLine());
-//Console.Write("Enter  Celsius : ");
-//int c = Convert.ToInt32(Console.ReadLine());
-
-//int f2 = (9 / 5) * c + 32;
-//int c2 = (f - 32) * 5 / 9;
-
-//Console.WriteLine("F to C : " + c2);
-//Console.WriteLine("C to F : " + f2);
-
-//---------------------7----------------------
+            switch (n)
+            {
+                case 1:
+                    Candidate2_1 candidate = new Candidate2_1();
+                    candidate.GetCandidateDetails();
+                    candidate.DisplayCandidateDetails();
+                    break;
 
 
-//Console.WriteLine("Enter P: ");
-//int p = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter R: ");
-//float r = float.Parse(Console.ReadLine());
-//Console.WriteLine("Enter N: ");
-//int n = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Intrest : " + (p * r * n) / 100);
+                case 2:
+                    Staff2_2 staff = new Staff2_2();
+                    Staff2_2[] s = new Staff2_2[2];
+                    for (int i = 0; i < 2; i++)
+                    {
+                        s[i] = new Staff2_2();
+                        s[i].GetStaff();
+                    }
+                    for (int i = 0; i < 2; i++)
+                    {
+                        s[i].SetDisplay();
+                    }
+                    break;
 
-//---------------------8----------------------
+                case 3:
+                    Bank_Account2_3 bankAccount = new Bank_Account2_3();
+                    bankAccount.GetAccountDetails();
+                    bankAccount.DisplayAccountDetails();
+                    break;
 
-//Console.WriteLine("Enter First Number : ");
-//int n1 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter Second Number : ");
-//int n2 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter Choice : ");
-//Console.WriteLine("1.+\n2.-\n3.*\n4./");
+                case 4:
+                    Console.Write("Enter Enrollment No: ");
+                    string enrollmentNo = Console.ReadLine();
 
+                    Console.Write("Enter Student Name: ");
+                    string studentName = Console.ReadLine();
 
-//char choice = Convert.ToChar(Console.ReadLine());
-//if (choice == '+')
-//    Console.WriteLine("Addition : " + (n1 + n2));
-//else if (choice == '-')
-//    Console.WriteLine("Subtraction : " + (n1 - n2));
-//else if (choice == '*')
-//    Console.WriteLine("Multiplication : " + (n1 * n2));
-//else if (choice == '/')
-//    Console.WriteLine("Division : " + (n1 / n2));
-//else
-//    Console.WriteLine("Enter valid option");
+                    Console.Write("Enter Semester: ");
+                    int semester = int.Parse(Console.ReadLine());
 
+                    Console.Write("Enter CPI: ");
+                    double cpi = double.Parse(Console.ReadLine());
 
-//----------using switch case---------------
+                    Console.Write("Enter SPI: ");
+                    double spi = double.Parse(Console.ReadLine());
 
+                    Student2_4 student = new Student2_4(enrollmentNo, studentName, semester, cpi, spi);
+                    student.DisplayStudentDetails();
+                    break;
 
-//Console.WriteLine("Enter n1 : ");
-//int n1 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter n2 : ");
-//int n2 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("1 add \n2 sub \n3 mul \n4 div");
-//Console.WriteLine("Enter Choice : ");
-//char choice = Convert.ToChar(Console.ReadLine());
-//switch (choice)
-//{
-//    case '1':
-//        Console.WriteLine("Addition : " + (n1 + n2));
-//        break;
+                case 5:
+                    Console.WriteLine("enter a length:");
+                    double length = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("enter a width:");
+                    double width = Convert.ToDouble(Console.ReadLine());
 
-//    case '2':
-//        Console.WriteLine("Subtraction : " + (n1 - n2));
-//        break;
+                    Rectangle2_5 ractangle = new Rectangle2_5(length, width);
+                    ractangle.DisplayArea();
+                    break;
 
-//    case '3':
-//        Console.WriteLine("Multiplication : " + (n1 * n2));
-//        break;
+                case 6:
+                    Interest interest = new Interest();
+                    interest.GetAccountDetails();
+                    interest.CalculateInterest();
+                    break;
 
-//    case '4':
-//        Console.WriteLine("Division : " + (n1 / n2));
-//        break;
+                case 7:
+                    Console.WriteLine("enter Basic:");
+                    double basic = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("enter TA:");
+                    double ta = Convert.ToDouble(Console.ReadLine());
+                    Salary2_7 salary = new Salary2_7(basic, ta);
+                    salary.DispalyTotalDetail();
+                    break;
 
-//  }
-//---------------------9----------------------
+                case 8:
+                    Console.WriteLine("enter a first distance:");
+                    double d1 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("enter a sec distance:");
+                    double d2 = Convert.ToDouble(Console.ReadLine());
+                    Distance2_8 distance = new Distance2_8(d1, d2);
+                    distance.AddDistance();
+                    distance.DisplayDistance();
+                    break;
 
-//Console.WriteLine("Enter n1 : ");
-//int n1 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter n2 : ");
-//int n2 = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Enter n3 : ");
-//int n3 = Convert.ToInt32(Console.ReadLine());
+                case 9:
+                    Console.WriteLine("enter a Material :");
+                    string material = Console.ReadLine();
+                    Console.WriteLine("enter a Price");
+                    double price = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter a Heigth");
+                    double heigth = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter a Surface_area");
+                    double surface_area = Convert.ToInt32(Console.ReadLine());
+                    Table table = new Table(material, price, heigth, surface_area);
+                    table.DisplayTabInfo();
+                    break;
 
-//if (n1 > n2 && n1 > n3)
-//    Console.WriteLine(n1 + " Is Greater");
-//else if (n2 > n3)
-//    Console.WriteLine(n2 + " Is Greater");
-//else
-//    Console.WriteLine(n3 + " Is Greater");
+                case 10:
+                    SalaryCal salaryCal = new SalaryCal();
+                    salaryCal.basic_sal();
+                    salaryCal.Disp_sal();
+                    salaryCal.Gross_sal();
+                    break;
 
-
-//---------------------10---------------------
-Console.WriteLine("Enter first number:");
-int a = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Enter second number:");
-int b = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Enter third number:");
-int c = Convert.ToInt32(Console.ReadLine());
-
-int max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
-
-Console.WriteLine("Maximum number is: " + max);
-
-
-
+            }
+        }
+        }
+}
